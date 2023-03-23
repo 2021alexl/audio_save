@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+pip install whisper
 import whisper 
 from audio_recorder_streamlit import audio_recorder
 import io

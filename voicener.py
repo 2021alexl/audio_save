@@ -1,9 +1,6 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-!pip install -U openai-whisper
-!pip install git+https://github.com/openai/whisper.git 
-!pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git
 import whisper 
 from audio_recorder_streamlit import audio_recorder
 import io

@@ -4,7 +4,6 @@ import pandas as pd
 import whisper 
 from audio_recorder_streamlit import audio_recorder
 import io
-import soundfile as sf
 from pydub import AudioSegment
 from pydantic import BaseModel
 from pydub import AudioSegment

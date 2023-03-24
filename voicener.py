@@ -5,12 +5,8 @@ import whisper
 from audio_recorder_streamlit import audio_recorder
 import io
 from pydub import AudioSegment
-from pydantic import BaseModel
-from pydub import AudioSegment
 from io import BytesIO
 import whisper
-import base64
-import torch
 import numpy as np
 import pandas as pd 
 import os
@@ -36,7 +32,7 @@ def main():
         filename = "audio.mp3"
         w_audio = whisper.load_audio(filename)
         pad_w_audio =whisper.pad_or_trim(w_audio)
-        torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
+        torch_device ='cpu'
         model = whisper.load_model("small.en")
         model = model.to(torch_device)
         mel = whisper.log_mel_spectrogram(pad_w_audio).to(model.device)

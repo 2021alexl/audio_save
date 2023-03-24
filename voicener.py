@@ -10,6 +10,7 @@ import whisper
 import numpy as np
 import pandas as pd 
 import os
+import torch
 import ffmpeg
 
 def download_link(content, filename):
@@ -32,8 +33,8 @@ def main():
         AudioSegment.from_file(BytesIO(audio_bytes)).export('audio.mp3', format='mp3')
         filename = "audio.mp3"
         w_audio = whisper.load_audio(filename)
-        pad_w_audio =whisper.pad_or_trim(w_audio)
-        torch_device ='cpu'
+        pad_w_audio =whisper.pad_or_trim(w_audio)    
+        torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
         model = whisper.load_model("small.en")
         model = model.to(torch_device)
         mel = whisper.log_mel_spectrogram(pad_w_audio).to(model.device)

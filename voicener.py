@@ -47,12 +47,12 @@ def main():
         st.write(result)
         if result: 
             m = st.text_input('-', 'this part is the label', 50)
-            if m != 'none':
+            if m != 'this part is the label':
                 result += ' | '
                 result += m
                 st.write(result)
                 file_name = st.text_input('1', 'this part is the file_name -- suggest using 1,2,3,4,5', 40)
-                if file_name:
+                if file_name!='this part is the file_name -- suggest using 1,2,3,4,5':
                     st.download_button('Download some text', result,file_name=file_name)
         
             

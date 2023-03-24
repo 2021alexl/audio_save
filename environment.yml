@@ -1,0 +1,12 @@
+name: myenv
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - ffmpeg=5.1.2
+  - pydub
+  - pip
+  - pip:
+    - -r package.txt
+    - -r requirement.txt
+

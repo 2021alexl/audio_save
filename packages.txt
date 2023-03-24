@@ -1,1 +1,1 @@
-ffmpeg
+ffmpeg==5.1.2

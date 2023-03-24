@@ -32,11 +32,12 @@ def main():
         s = BytesIO(audio_bytes)
         AudioSegment.from_file(BytesIO(audio_bytes)).export('audio.mp3', format='mp3')
         filename = "audio.mp3"
-        w_audio = whisper.load_audio(filename)
-        pad_w_audio =whisper.pad_or_trim(w_audio)    
+        
         torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
         model = whisper.load_model("small.en")
         model = model.to(torch_device)
+        w_audio = whisper.load_audio(filename)
+        pad_w_audio =whisper.pad_or_trim(w_audio)  
         mel = whisper.log_mel_spectrogram(pad_w_audio).to(model.device)
         decode_options = dict(language="en")
         transcribe_options = dict(task="transcribe", **decode_options)

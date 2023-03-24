@@ -15,4 +15,4 @@ urllib3==1.26.14
 plotly==5.5.0
 ffmpeg
 ffmpeg-python
-torch
+speech_recognition

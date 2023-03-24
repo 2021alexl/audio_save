@@ -10,6 +10,7 @@ import whisper
 import numpy as np
 import pandas as pd 
 import os
+import ffmpeg
 
 def download_link(content, filename):
     """Function to create a download link for a given string."""

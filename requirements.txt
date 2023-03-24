@@ -13,4 +13,4 @@ openai==0.27.0
 pillow==9.3.0
 urllib3==1.26.14
 plotly==5.5.0
-ffmpeg==5.1.2
+ffmpeg

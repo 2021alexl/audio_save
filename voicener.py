@@ -12,6 +12,8 @@ import pandas as pd
 import os
 import torch
 import ffmpeg
+import speech_recognition as sr
+
 
 def download_link(content, filename):
     """Function to create a download link for a given string."""
@@ -32,17 +34,12 @@ def main():
         s = BytesIO(audio_bytes)
         AudioSegment.from_file(BytesIO(audio_bytes)).export('audio.mp3', format='mp3')
         filename = "audio.mp3"
+        with sr.AudioFile('audio.mp3') as source:
+            audio_data = r.record(source)
         
-        torch_device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        model = whisper.load_model("small.en")
-        model = model.to(torch_device)
-        w_audio = whisper.load_audio(filename)
-        pad_w_audio =whisper.pad_or_trim(w_audio)  
-        mel = whisper.log_mel_spectrogram(pad_w_audio).to(model.device)
-        decode_options = dict(language="en")
-        transcribe_options = dict(task="transcribe", **decode_options)
-        transcription = model.transcribe(filename, **transcribe_options)
-        result = transcription["text"]
+        r = sr.Recognizer()
+        text = r.recognize_google(audio_data, language='en-US')
+        
         st.write(result)
         if result: 
             m = st.text_input('-', 'none', 50)
